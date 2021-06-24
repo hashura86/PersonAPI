@@ -1,5 +1,6 @@
 package com.digital.inovation.one.personAPI.entities;
 
+import com.digital.inovation.one.personAPI.enums.GenderType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,6 +31,11 @@ public class Person {
     private String cpf;
 
     private LocalDate birthDate;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private GenderType gender;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Phone> phones;
